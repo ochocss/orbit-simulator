@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dphrlo5hsqvlu"]
+
+[ext_resource type="PackedScene" uid="uid://dkfbfg51tb3yo" path="res://scenes/body.tscn" id="1_twnol"]
+
+[node name="Root" type="Node2D"]
+
+[node name="Body" parent="." instance=ExtResource("1_twnol")]
+position = Vector2(200, 178)
+mass = null
+radius = null
+
+[node name="Body2" parent="." instance=ExtResource("1_twnol")]
+position = Vector2(433, 178)
+mass = null
+radius = null

@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://52avicot6tjf"]
+
+[ext_resource type="Script" path="res://scripts/body_labels.gd" id="1_blqqd"]
+
+[node name="BodyLabels" type="HBoxContainer"]
+offset_right = 167.0
+offset_bottom = 50.0
+script = ExtResource("1_blqqd")
+
+[node name="IndexLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "1"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VelocityLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 16
+text = "Velocity: "
+
+[node name="AcelerationLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 16
+text = "Aceleration: "

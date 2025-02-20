@@ -1,0 +1,144 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqk5tshjrv2hw"]
+
+[ext_resource type="Script" path="res://scripts/body_creator.gd" id="1_gvn62"]
+
+[node name="BodyCreator" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -315.0
+offset_right = 334.0
+grow_vertical = 0
+script = ExtResource("1_gvn62")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.203922)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MassLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Mass"
+
+[node name="MassContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Mass" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/MassContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 10.0
+step = 0.01
+value = 5.0
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/MassContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 14
+text = "*10^"
+
+[node name="Exponent" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/MassContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 40.0
+value = 10.0
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RadiusLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Radius"
+
+[node name="RadiusNumber" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+max_value = 10000.0
+value = 10.0
+
+[node name="Control2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VelocityLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Initial Velocity"
+
+[node name="VelocityContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VelocityContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 14
+text = "x:"
+
+[node name="XVelocity" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VelocityContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -100.0
+step = 0.1
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer/VelocityContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/VelocityContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 14
+text = "y:"
+
+[node name="YVelocity" type="SpinBox" parent="MarginContainer/HBoxContainer/VBoxContainer/VelocityContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = -100.0
+step = 0.1
+
+[node name="Control4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubmitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Submit"
+
+[node name="ColorPicker" type="ColorPickerButton" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0, 0, 1)
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/SubmitButton" to="." method="_on_submit_button_pressed"]

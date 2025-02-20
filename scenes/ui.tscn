@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0r3ynlydvgn5"]
+
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_3848g"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_3848g")
+
+[node name="InfoContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.018
+anchor_right = 1.0
+anchor_bottom = 0.018
+offset_left = -200.0
+offset_top = -0.200001
+offset_bottom = 191.8
+grow_horizontal = 0
+
+[node name="SliderContainer" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.987
+anchor_top = 0.978
+anchor_right = 0.987
+anchor_bottom = 0.978
+offset_left = -350.2
+offset_top = -65.2
+offset_right = 0.799927
+offset_bottom = -0.200012
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SliderContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="SliderContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Time Scale:"
+
+[node name="Control" type="Control" parent="SliderContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+
+[node name="SpinBox" type="SpinBox" parent="SliderContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+max_value = 12.0
+step = 0.1
+value = 1.0
+alignment = 1
+
+[node name="Control" type="Control" parent="SliderContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="SliderContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+max_value = 12.0
+step = 0.1
+value = 1.0
+
+[connection signal="value_changed" from="SliderContainer/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="value_changed" from="SliderContainer/HSlider" to="." method="_on_h_slider_value_changed"]
