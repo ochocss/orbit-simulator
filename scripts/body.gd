@@ -5,7 +5,9 @@ extends Node2D
 @onready var mass_label = $Control/MassLabel
 
 @export var color : Color = Color(1.0, 1.0, 1.0, 1.0)
-@export var mass : float = 1.35 * pow(10, 11)
+@export var mass : float = 5 * pow(10, 10)
+@export var raw_mass_value : float = 5
+@export var raw_mass_exponent : int = 10
 @export var radius : int = 5
 @export var velocity := Vector2(0.0, 0.0)
 var aceleration := Vector2(0.0, 0.0)
@@ -15,7 +17,9 @@ func _ready():
 	sprite_2d.material.set_shader_parameter("my_color", color)
 	sprite_2d.scale = Vector2((radius*2)/300.0, (radius*2)/300.0)
 	collision_shape_2d.set("shape.radius", radius)
-	mass_label.text = String.num_scientific(mass)
+	
+	mass_label.text = str(raw_mass_value) + "e" + str(raw_mass_exponent)
+	Global.scientific_num_display(mass)
 
 
 func _physics_process(_delta):
@@ -60,6 +64,6 @@ func collide(body : Node2D):
 	velocity.y = (body.velocity.y * body.mass + velocity.y * mass)/new_mass
 	
 	mass = new_mass
-	mass_label.text = String.num_scientific(mass)
+	mass_label.text = Global.scientific_num_display(mass)
 	
 	body.queue_free()
