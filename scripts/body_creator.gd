@@ -21,6 +21,8 @@ func _on_submit_button_pressed():
 	var body = body_preload.instantiate()
 	body.color = color_picker.color
 	body.mass = mass.value * pow(10, exponent.value)
+	body.raw_mass_value = mass.value
+	body.raw_mass_exponent = exponent.value
 	body.radius = radius_number.value
 	body.position = body_position
 	body.velocity = Vector2(x_velocity.value, y_velocity.value)
