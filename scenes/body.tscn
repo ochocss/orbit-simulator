@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkfbfg51tb3yo"]
+[gd_scene format=3 uid="uid://dkfbfg51tb3yo"]
 
-[ext_resource type="Script" path="res://scripts/body.gd" id="1_g21vb"]
+[ext_resource type="Script" uid="uid://16ok4vgs3fs7" path="res://scripts/body.gd" id="1_g21vb"]
 [ext_resource type="Texture2D" uid="uid://bu5dthjq5tarx" path="res://assets/circle_default.png" id="2_mn0ox"]
-[ext_resource type="Shader" path="res://shaders/body.gdshader" id="2_rd4on"]
+[ext_resource type="Shader" uid="uid://bd617fi58hj34" path="res://shaders/body.gdshader" id="2_rd4on"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbbsj"]
 resource_local_to_scene = true
@@ -12,21 +12,21 @@ shader_parameter/alpha = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_glaue"]
 
-[node name="Body" type="Node2D" groups=["Bodies"]]
+[node name="Body" type="Node2D" unique_id=260333640 groups=["Bodies"]]
 script = ExtResource("1_g21vb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1085314676]
 material = SubResource("ShaderMaterial_dbbsj")
 scale = Vector2(0.067, 0.067)
 texture = ExtResource("2_mn0ox")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=918617642]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=738635260]
 shape = SubResource("CircleShape2D_glaue")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1326103980]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -36,7 +36,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MassLabel" type="Label" parent="Control"]
+[node name="MassLabel" type="Label" parent="Control" unique_id=496608301]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
