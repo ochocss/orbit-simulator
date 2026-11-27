@@ -6,6 +6,7 @@ extends Node
 const GRAVITATIONAL_CONST : float = 6.6743 * pow(10, -11)
 var time_scale : float = 1.0
 
+
 func scientific_num_display(num : float):
 	var main : float = log(num)/log(10)
 	var exponent : int = floori(main)
@@ -13,7 +14,6 @@ func scientific_num_display(num : float):
 	main -= exponent
 	main = pow(10, main)
 	
-	print("New mass: " + str(main) + "e" + str(exponent))
 	main = round(main*100)
 	main /= 100
 	
