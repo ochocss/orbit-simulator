@@ -7,6 +7,8 @@ extends CanvasLayer
 @onready var body_labels_preload = preload("res://scenes/body_labels.tscn")
 @onready var body_creator_preload = preload("res://scenes/body_creator.tscn")
 
+@onready var camera : Camera2D = get_parent().get_node("Camera2D")
+
 var body_creator : Control
 
 func _ready():
@@ -22,6 +24,14 @@ func _input(event : InputEvent):
 		else:
 			_on_h_slider_value_changed(0)
 	if body_creator == null:
+		if event.is_action_pressed("left_click"):
+			for body : Node2D in get_tree().get_nodes_in_group("Bodies"):
+				var pos = camera.get_global_mouse_position()
+				if (pos.x > body.position.x - body.radius && pos.x < body.position.x + body.radius && 
+					pos.y > body.position.y - body.radius && pos.y < body.position.y + body.radius):
+					print("Deleting..")
+					body.queue_free()
+					# remove body from list
 		return
 	
 	if event.is_action_pressed("enter"):
@@ -42,7 +52,6 @@ func instantiate_body_creator(mouse_position : Vector2):
 	
 	h_slider.value = 0
 	
-	var camera : Camera2D = get_parent().get_node("Camera2D")
 	
 	body_creator = body_creator_preload.instantiate()
 	add_child(body_creator)
